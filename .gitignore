@@ -1,0 +1,25 @@
+# exclude every thing.
+*
+# include specific files
+!.bash_profile
+!.bashrc
+!.gitignore
+!.config/qutebrowser/config.py
+!.config/feh/themes
+!.config/feh/keys
+!.config/fontconfig/fonts.conf
+!.config/foot/foot.ini
+!.config/mpv/mpv.conf
+!.config/mpv/input.conf
+!.config/mpv/example-input
+!.config/sway/autostart
+!.config/sway/config
+!.config/sway/rules
+!.config/sway/map
+!.config/swayimg/config
+!.config/tmux/tmux.conf
+!.config/waybar/style.css
+!.config/waybar/config
+!.config/vga_setup.sh
+!.config/pashare
+

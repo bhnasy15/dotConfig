@@ -1,0 +1,35 @@
+[general]
+size = image
+
+[viewer]
+scale =  fit
+antialiasing = no
+
+[font]
+color = #ff00ff
+
+[info.viewer]
+top_left = none
+top_right = none
+bottom_left = none
+bottom_right = none
+
+[list]
+order = alpha
+loop = no
+
+[keys.viewer]
+equal = zoom +10
+minus = zoom -10
+0 = zoom optimal
+g = first_file
+G = last_file
+n = next_file
+p = prev_file
+a = animation
+F5 = slideshow
+F11 = fullscreen
+r = reload
+i = info
+q = exit
+Escape = exit

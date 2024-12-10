@@ -1,0 +1,31 @@
+#!/bin/bash
+# man pipewire-pulse-module-simple-protocol-tcp
+case "$1" in
+	start)
+        $0 stop
+        if [ -z $2 ]; then ch=2 ; else ch=1 ; fi
+        if [ -z $3 ]; then rt=22050 ; else rt=12000 ; fi
+        src=`pactl list sources short | cut -f 1 | head -n 1`
+        pactl load-module module-simple-protocol-tcp \
+            rate=$rt \
+            format=s16le \
+            channels=$ch \
+            record=true \
+            playback=true \
+            port=4711 \
+            source=$src
+		;;
+	stop)
+        lst=`pactl list modules short | grep tcp | cut -f1`
+		for m in $lst
+		do
+			pactl unload-module $m
+		done
+		;;
+	list)
+		pactl list modules short | grep tcp
+		;;
+	*)
+		echo "Usage: $0 start|stop|list" >&2
+		;;
+esac

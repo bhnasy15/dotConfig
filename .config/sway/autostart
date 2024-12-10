@@ -1,0 +1,9 @@
+exec pidof lxpolkit || lxpolkit &
+
+exec pidof fnott || fnott &
+
+exec pidof waybar || waybar &
+
+#exec pidof nu && pidof pueued || pueued -d &
+
+#exec pidof swayidle || _swayidle
