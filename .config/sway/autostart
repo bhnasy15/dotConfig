@@ -1,6 +1,6 @@
 exec pidof lxpolkit || lxpolkit &
 
-exec pidof fnott || fnott &
+exec pidof mako || mako &
 
 exec pidof waybar || waybar &
 

@@ -145,6 +145,14 @@ c.content.default_encoding = 'utf-8'
 # Type: Bool
 c.content.prefers_reduced_motion = True
 
+# Allow websites to request geolocations.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+c.content.geolocation = False
+
 # Value to send in the `Accept-Language` header. Note that the value
 # read from JavaScript is always the global value.
 # Type: String
@@ -196,7 +204,7 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}) AppleWebKit/{w
 # between 5.12 and 5.14 (inclusive), changing the value exposed to
 # JavaScript requires a restart.
 # Type: FormatString
-config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:131.0) Gecko/20100101 Firefox/131.0', 'https://accounts.google.com/*')
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:133.0) Gecko/20100101 Firefox/133.0', 'https://accounts.google.com/*')
 
 # Which method of blocking ads should be used.  Support for Adblock Plus
 # (ABP) syntax blocklists using Brave's Rust library requires the
@@ -209,7 +217,7 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:131.0) Geck
 #   - adblock: Use Brave's ABP-style adblocker
 #   - hosts: Use hosts blocking
 #   - both: Use both hosts blocking and Brave's ABP-style adblocker
-c.content.blocking.method = 'adblock'
+c.content.blocking.method = 'both'
 
 # List of URLs to ABP-style adblocking rulesets.  Only used when Brave's
 # ABP-style adblocker is used (see `content.blocking.method`).  You can
@@ -229,6 +237,18 @@ config.set('content.images', True, 'chrome-devtools://*')
 # Load images automatically in web pages.
 # Type: Bool
 config.set('content.images', True, 'devtools://*')
+
+# Allow JavaScript to read from or write to the clipboard. With
+# QtWebEngine, writing the clipboard as response to a user interaction
+# is always allowed. On Qt < 6.8, the `ask` setting is equivalent to
+# `none` and permission needs to be granted manually via this setting.
+# Type: JSClipboardPermission
+# Valid values:
+#   - none: Disable access to clipboard.
+#   - access: Allow reading from and writing to the clipboard.
+#   - access-paste: Allow accessing the clipboard and pasting clipboard content.
+#   - ask: Prompt when requested (grants 'access-paste' permission).
+config.set('content.javascript.clipboard', 'access-paste', 'https://aur.archlinux.org')
 
 # Enable JavaScript.
 # Type: Bool
@@ -350,7 +370,7 @@ c.downloads.remove_finished = 3000
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ['alacritty', '-t', 'SCRIPT', '-e', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.command = ['foot', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
 
 # Command (and arguments) to use for selecting a single file in forms.
 # The command should write the selected file path to the specified file
@@ -358,7 +378,7 @@ c.editor.command = ['alacritty', '-t', 'SCRIPT', '-e', 'nvim', '{file}', '-c', '
 # the file to be written to. If not contained in any argument, the
 # standard output of the command is read instead.
 # Type: ShellCommand
-c.fileselect.single_file.command = ['alacritty', '-e', 'vfm', '--choosefile={}']
+c.fileselect.single_file.command = ['foot', 'vifm', '--choosedir={}']
 
 # Command (and arguments) to use for selecting multiple files in forms.
 # The command should write the selected file paths to the specified file
@@ -367,7 +387,7 @@ c.fileselect.single_file.command = ['alacritty', '-e', 'vfm', '--choosefile={}']
 # contained in any argument, the   standard output of the command is
 # read instead.
 # Type: ShellCommand
-c.fileselect.multiple_files.command = ['alacritty', '-e', 'vfm', '--choosefiles={}']
+c.fileselect.multiple_files.command = ['foot', 'vifm', '--choosedir={}']
 
 # Command (and arguments) to use for selecting a single folder in forms.
 # The command should write the selected folder path to the specified
@@ -375,7 +395,7 @@ c.fileselect.multiple_files.command = ['alacritty', '-e', 'vfm', '--choosefiles=
 # Filename of the file to be written to. If not contained in any
 # argument, the   standard output of the command is read instead.
 # Type: ShellCommand
-c.fileselect.folder.command = ['alacritty', '-e', 'vfm', '--choosedir={}']
+c.fileselect.folder.command = ['foot', 'vifm', '--choosedir={}']
 
 # CSS border value for hints.
 # Type: String
@@ -544,6 +564,13 @@ c.colors.webpage.darkmode.threshold.background = 77
 # empty value, a system-specific monospace default is used.
 # Type: List of Font, or Font
 c.fonts.default_family = ['serif', 'sans-serif']
+
+# Default font size to use. Whenever "default_size" is used in a font
+# setting, it's replaced with the size listed here. Valid values are
+# either a float value with a "pt" suffix, or an integer value with a
+# "px" suffix.
+# Type: String
+c.fonts.default_size = '12pt'
 
 # Font used in the completion widget.
 # Type: Font

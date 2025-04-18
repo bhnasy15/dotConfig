@@ -27,14 +27,11 @@
 				"default": ""
 			},
 			"on-click": "activate",
-			"on-scroll-up": "hyprctl dispatch workspace e+1",
-			"on-scroll-down": "hyprctl dispatch workspace e-1"
 		},
 		"river/tags":{
 			"num-tags": 9,
 			"disable-click": false,
 		},
-
 		"tray": {
 			"icon-size": 21,
 			"spacing": 10
@@ -45,11 +42,11 @@
 			"format-alt": "{:%Y-%m-%d}"
 		},
 		"cpu": {
-			"format": "{usage}% ",
+			"format": "{usage}% ",
 			"tooltip": false
 		},
 		"memory": {
-			"format": "{}% "
+			"format": "{}% "
 		},
 		"backlight": {
 			"format": "{percent}% {icon}",
@@ -68,12 +65,12 @@
 			"format-icons": ["", "", "", "", ""]
 		},
 		"network": {
-			"format-wifi": "{essid} ({signalStrength}%) ",
+			"format-wifi": "{signalStrength}% ",
 			"format-ethernet": "{ipaddr}/{cidr} ",
 			"tooltip-format": "{ifname} via {gwaddr} ",
 			"format-linked": "{ifname} (No IP) ",
-			"format-disconnected": "Disconnected ⚠",
-			"format-alt": "{ifname}: {ipaddr}/{cidr}"
+			"format-disconnected": "󰖪",
+			"format-alt": "{ifname}: {essid}:{ipaddr}/{cidr}"
 		},
 		"pulseaudio": {
 			"scroll-step": 1,
@@ -96,7 +93,7 @@
 			"on-click-right": "pavucontrol"
 		},
 		"sway/language": {
-			"format": "({shortDescription} )"
+			"format": "{shortDescription} "
 		},
 }
 

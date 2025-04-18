@@ -40,7 +40,7 @@ bindsym --to-code $mod+Shift+Down move down
 bindsym --to-code $mod+Shift+Up move up
 bindsym --to-code $mod+Shift+Right move right
 
-bindsym --to-code Mod4+tab workspace back_and_forth
+bindsym --to-code $mod+tab workspace back_and_forth
 bindsym --to-code $mod+Backspace workspace back_and_forth
 #
 # Workspaces:
@@ -179,7 +179,7 @@ bindsym --to-code --no-repeat $mod+s mode "command"
 # }
 
 # misc {
-    bindsym --to-code --no-repeat F1 exec 'pidof wofi || wofi --show drun'
+    bindsym --to-code --no-repeat $mod+F1 exec 'pidof wofi || wofi'
     bindsym --to-code --no-repeat XF86HomePage exec qutebrowser
     bindsym --to-code --no-repeat $mod+F2 exec qutebrowser
     bindsym --to-code --no-repeat XF86Explorer exec pcmanfm

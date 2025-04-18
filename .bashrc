@@ -18,24 +18,17 @@ bind -x '"\C-l": clear'
 
 # alias
 alias ls='ls -h --color=auto'
-alias ll='ls -gol'
+alias ll='ls -go'
 alias la='ls -A'
 
 alias v='nvim'
-alias em='emacsclient -c'
 alias vf='vifm'
-alias tm='tmux a || tmux'
 
 alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 alias diff='diff --color=auto'
 
 alias ip='ip --color=auto'
-
-alias mount='sudo mount -o uid=$USER'
-alias umount='sudo umount'
 
 alias batc='cat /sys/class/power_supply/BAT0/capacity'
 alias bats='cat /sys/class/power_supply/BAT0/status'
@@ -43,12 +36,8 @@ alias bats='cat /sys/class/power_supply/BAT0/status'
 alias py='python3'
 alias info='info --vi-keys'
 
-# prompt
-function nonzero_return() {
-	RETVAL=$?
-	[ $RETVAL -ne 0 ] && echo "$RETVAL"
-}
-PS1="\[\e[1;31m\]\`nonzero_return\`\[\e[0m\] \W \[\e[1;32m\]>>\[\e[0m\] "
+PROMPT_COMMAND='RETURN_VALUE=`RT=$?; [ $RT -ne 0 ] && echo $RT`'
+PS1='\[\e[1;31m\]$RETURN_VALUE\[\e[0m\] \W \[\e[1;32m\]\$\[\e[0m\] '
 
 # completion
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
